@@ -14,3 +14,12 @@ class Solution {
         return answer;
     }
 }
+
+// 다른 사람 풀이
+// class Solution {
+//     public String reverseStr(String str){
+//         char[] sol = str.toCharArray();
+//     Arrays.sort(sol);
+//     return new StringBuilder(new String(sol)).reverse().toString();
+//     }
+// }
