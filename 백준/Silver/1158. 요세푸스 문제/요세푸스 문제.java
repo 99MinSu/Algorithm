@@ -13,7 +13,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
         
-        Queue<Integer> qu = new LinkedList<>(); // 큐 생성
+        Queue<Integer> qu = new LinkedList<>(); // 큐 생성 // ArrayDeque 로 생성해 주는 것이 좋다
 
         for (int i = 1; i <= n; i++) { // 큐에 1부터 n 까지 순서대로 넣어주기
         	qu.offer(i); 
@@ -35,6 +35,41 @@ public class Main {
         System.out.println(sb);
     }      
 }
+
+// 덱으로 푸는 게 속도가 빠르다 앞으로 덱으로 풀기
+    // static int N, K;
+    // static Queue<Integer> queue = new ArrayDeque<>();
+    // static StringBuilder sb = new StringBuilder();
+    // public static void main(String[] args) throws Exception{
+    //     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    //     StringTokenizer st = new StringTokenizer(br.readLine());
+    //     N = Integer.parseInt(st.nextToken());
+    //     K = Integer.parseInt(st.nextToken());
+        
+    //     // 번호를 채우고
+    //     for (int i = 1; i <= N; i++) {
+    //         queue.offer(i);
+    //     }
+        
+    //     // 풀이
+    //     int aliveCnt = 1; // 살아 있는 번호에서만 증가 <= K 번째를 판단
+        
+    //     sb.append("<");
+    //     while( ! queue.isEmpty() ) {
+    //         int num = queue.poll();
+            
+    //         if( ( aliveCnt % K ) == 0 ) {
+    //             sb.append(num).append(", ");
+    //         }else {
+    //             queue.offer(num);
+    //         }
+    //         aliveCnt++;
+    //     }
+        
+    //     sb.setLength(sb.length() - 2);
+    //     sb.append(">");
+    //     System.out.println(sb);
+    // }
 
 // 배열로 풀기 ( 다른 것보다 빠르다 )
 	// static int N, K;
