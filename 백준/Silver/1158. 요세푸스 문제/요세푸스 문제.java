@@ -35,3 +35,47 @@ public class Main {
         System.out.println(sb);
     }      
 }
+
+// 배열로 풀기 ( 다른 것보다 빠르다 )
+	// static int N, K;
+	// static int[] input;
+	// static StringBuilder sb = new StringBuilder();
+	// public static void main(String[] args) throws Exception{
+	// 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	// 	StringTokenizer st = new StringTokenizer(br.readLine());
+	// 	N = Integer.parseInt(st.nextToken());
+	// 	K = Integer.parseInt(st.nextToken());
+		
+	// 	input = new int[N + 1]; // 출력 번호 1 시작 : 0 dummy;
+		
+	// 	// 번호 채우고, 죽으면 0으로 변경
+	// 	for (int i = 1; i <= N; i++) {
+	// 		input[i] = i;
+	// 	}
+		
+	// 	int deathCnt = 0; // 죽은 사람의 수 모두 죽으면 종료
+	// 	int idx = 1; // 죽은 사람 포함하는 뱌열 순회
+	// 	int aliveCnt = 1; // 살아 있는 번호에서만 증가
+		
+	// 	sb.append("<");
+		
+	// 	while(true) {
+	// 		if( deathCnt == N) break; // 모두 죽으면 종료
+			
+	// 		// 살아 있는 사람의 K 번째 선택 죽인다.
+	// 		if(input[idx] != 0) { // 살아있는 사람에 대해서만 따진다.
+	// 			if( (aliveCnt % K) == 0) { // 살아있는 사람 중에 K 번째
+	// 				sb.append(input[idx]).append(", ");
+	// 				input[idx] = 0; // 죽음으로 표시
+	// 				deathCnt++;
+	// 			}
+	// 			aliveCnt++;
+	// 		}
+			
+	// 		idx++; // 항상 증가
+	// 		if( idx > N ) idx = 1;
+	// 	}
+	// 	sb.setLength(sb.length() - 2); // 뒤에 잘라주기
+	// 	sb.append(">");
+	// 	System.out.println(sb);
+	// }
