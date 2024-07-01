@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+// DP
 public class Main { 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -32,3 +32,35 @@ public class Main {
 		System.out.println(dp[N]);
 	}
 }
+
+// 반복문
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+	static int n, count;
+	public static void main(String[] args) throws IOException{
+		Scanner sc = new Scanner(System.in);
+		
+		n = sc.nextInt();
+		
+		while(n > 0) {
+			if(n % 5 == 0) {
+				count += n / 5;
+				break;
+			}else {	
+				n -= 3;
+				count++;
+			}
+
+			if(n < 0) {
+				count = -1;
+			}
+				
+		}
+		
+		System.out.println(count);
+	}
+ 
+}
+
