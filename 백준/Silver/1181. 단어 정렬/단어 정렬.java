@@ -15,6 +15,7 @@ public class Main {
 		}
     	
 		Arrays.sort(s, new Comparator<String>() {
+			@Override
 			public int compare(String s1, String s2) {
 				// 단어 길이가 같을 경우 
 				if (s1.length() == s2.length()) {
@@ -26,6 +27,16 @@ public class Main {
 				}
 			}
 		});
+
+	     	// 람다식으로 바꿔보기
+//		Arrays.sort(s, (s1, s2) -> {
+//		    // 단어 길이가 같을 경우
+//		    if (s1.length() == s2.length()) {
+//		        return s1.compareTo(s2);
+//		    } else {
+//		        return s1.length() - s2.length();
+//		    }
+//		});
 		
 		System.out.println(s[0]);
 		
