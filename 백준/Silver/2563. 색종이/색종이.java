@@ -4,8 +4,8 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String args[]) throws Exception {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        int count = Integer.parseInt(bufferedReader.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int count = Integer.parseInt(br.readLine());
         int totalArea = 0;
         boolean[][] paper = new boolean[100][100];
 
