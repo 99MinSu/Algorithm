@@ -1,30 +1,21 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
-
-	static long[] memoi = new long[100]; // 이미 계산된 것을 저장 재활용
-	
-	public static void main(String[] args) {
-		memoi[1] = 1;
-		memoi[2] = 1;
-		Scanner sc = new Scanner(System.in);
+	static int[] dp;
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        dp = new int[N + 1];  //DP 배열 초기화
+                
+        System.out.print(fibo(N));
+    }
+    // 탑다운 방식
+	static int fibo(int N) {
+		if (N <= 1)	return N;
+		if (dp[N] != 0)	return dp[N]; // 메모이제이션
 		
-		int n = sc.nextInt();
-		
-		for (int i = 3; i <= n; i++) {
-			memoi[i] = memoi[i-1] + memoi[i-2];
-		}
-		System.out.println(memoi[n]);
-
+		dp[N] = fibo(N-1) + fibo(N-2);
+		return dp[N];
 	}
-	
-//	static long fibo(int x) {
-//		if( x == 1 || x == 2) return 1;
-//		
-//		if( memoi[x] !=  0) return memoi[x]; // 이미 계산된 것이 있으면 그거을 return
-//		
-////		memoi[x] = fibo(x-1) + fibo(x-2);
-//		return memoi[x] = fibo(x-1) + fibo(x-2);
-//	}
-//
 }
