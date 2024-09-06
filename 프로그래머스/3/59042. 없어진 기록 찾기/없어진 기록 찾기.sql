@@ -1,0 +1,3 @@
+SELECT ao.ANIMAL_ID, ao.NAME
+  FROM ANIMAL_OUTS ao left join ANIMAL_INS ai on ao.ANIMAL_ID = ai.ANIMAL_ID
+ WHERE ai.ANIMAL_ID is null
