@@ -1,32 +1,34 @@
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[][] edges) {
-        Map<Integer, Integer> out = new HashMap<>();
-        Map<Integer, Integer> in = new HashMap<>();
+    public int[] solution(int[][] edges) {        
+        HashMap<Integer,Integer> in = new HashMap<>();
+        HashMap<Integer,Integer> out = new HashMap<>();
+        
         int[] answer = new int[4];
-
-        for (int[] edge : edges) { 
+        
+        for(int[] edge : edges){
             out.put(edge[0], out.getOrDefault(edge[0], 0) + 1);
-            in.put(edge[1], in.getOrDefault(edge[1], 0) + 1);
+            in.put(edge[1], in.getOrDefault(edge[1] , 0) + 1);
         }
-
-        for (int node : out.keySet()) {
-            if (out.get(node) > 1) { 
-                if (!in.containsKey(node)) {
+        
+        for(int node : out.keySet()){
+            if(out.get(node) > 1){
+                if(!in.containsKey(node)){
                     answer[0] = node;
-                } else {
+                }else
                     answer[3] += 1;
-                }
             }
         }
-
-        for (int node : in.keySet()) {
-            if (!out.containsKey(node)) { 
+        
+        for(int node : in.keySet()){
+            if(!out.containsKey(node)){
                 answer[2] += 1;
             }
         }
-        answer[1] = out.get(answer[0]) - answer[2] - answer[3]; 
+        
+        answer[1] = out.get(answer[0]) - answer[2] - answer[3];
+        
         return answer;
     }
 }
