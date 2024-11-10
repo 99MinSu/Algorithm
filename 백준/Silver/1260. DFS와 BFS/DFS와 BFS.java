@@ -8,138 +8,73 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N,M,V;
-    static List<List<Integer>> adjList = new ArrayList<>();
-    static boolean[] visit; // 중복 방문 방지
-    static boolean[][] matrix;
-	public static void main(String[] args) throws Exception {
+	static int N, M, V;
+	static boolean[] visit;
+	static List<List<Integer>> adjList = new ArrayList<>();
+	static StringBuilder sb1 = new StringBuilder();
+	static StringBuilder sb2 = new StringBuilder();
+	static Queue<Integer> q = new ArrayDeque<>();
+	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int V = Integer.parseInt(st.nextToken());
 		
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		V = Integer.parseInt(st.nextToken());
-		
-		for (int i = 0; i < N + 1; i++) { // 0 dummy 
-			adjList.add(new ArrayList<Integer>());
+		for (int i = 0; i < N+1; i++) {
+			adjList.add(new ArrayList<>());
 		}
 		
-		for (int i = 0; i < M ; i++) {
+		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine());
-			int n1 = Integer.parseInt(st.nextToken());
-			int n2 = Integer.parseInt(st.nextToken());
-			adjList.get(n1).add(n2); 
-			adjList.get(n2).add(n1); // 양방향!!!!!!!!!!!!!!!!
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			adjList.get(a).add(b);
+			adjList.get(b).add(a);
 		}
 		
-        for (int i = 0; i < adjList.size(); i++) { // 여러 개인 경우 작은 것부터 방문하기 위해 정렬
-            Collections.sort(adjList.get(i)); 
-        }
-        
-		visit = new boolean[N + 1];
+		for (int i = 0; i < adjList.size(); i++) {
+			Collections.sort(adjList.get(i));
+		}	
+		
+		visit = new boolean[N+1];
 		
 		dfs(V);
-		System.out.println();
 		
-		for (int i = 0; i < N + 1; i++) {
-			visit[i] = false;
-		}
+		System.out.println(sb1);
+				
+		visit = new boolean[N+1];
 		
 		bfs(V);
+		
+		System.out.println(sb2);
 	}
 	
-    static void bfs(int n) { // n : 시작 정점
-        Queue<Integer> queue = new ArrayDeque<>();
-        queue.offer(n);
-        visit[n] = true;
-        
-        while(! queue.isEmpty() ) {
-            // 정점을 꺼낸다.
-            int v = queue.poll();
-            
-            // 필요한 처리 수행
-            System.out.print(v + " ");
-            
-            // 계속 방문을 이어 간다.
-            List<Integer> list = adjList.get(v);
-            for (Integer i : list) {
-				if( visit[i] ) continue;
-                queue.offer(i);
-                visit[i] = true;
-			}                     
-        }
-    }
-    
-    // stack 대신 동일한 효과 더 편한 재귀 호출을 이용
-    static void dfs(int n) { // n : 시작 정점
-        visit[n] = true;
-        
-        // 필요한 처리 수행
-        System.out.print(n + " ");
-        
-        // 계속 방문을 이어 간다.
-        List<Integer> list = adjList.get(n);
-        for (Integer i : list) {
-			if( visit[i] ) continue;
-            dfs(i);
-		}         
-    }
-	    
-	        // 자료구조
-//	        matrix = new boolean[N+1][N+1]; // 0 dummy
-//	        
-//	        for (int i = 0; i < M; i++) {
-//				st = new StringTokenizer(br.readLine());
-//				int n1 = Integer.parseInt(st.nextToken());
-//				int n2 = Integer.parseInt(st.nextToken());
-//				matrix[n1][n2] = true;
-// 				matrix[n2][n1] = true;
-//			}
-//	        
-//	        visit = new boolean[N+1];
-//	        
-//     	    bfs(V);
-//	        System.out.println();
-//			for (int i = 0; i < N + 1; i++) {
-//				visit[i] = false;
-//		    }
-//			
-//	        dfs(V);
-//	    }
-//	
-//	    static void bfs(int n) { // n : 시작 정점
-//	        Queue<Integer> queue = new ArrayDeque<>();
-//	        queue.offer(n);
-//	        visit[n] = true;
-//	        
-//	        while(! queue.isEmpty() ) {
-//	            // 정점을 꺼낸다.
-//	            int v = queue.poll();
-//	            
-//	            // 필요한 처리 수행
-//	            System.out.print(v + " ");
-//	            
-//	            // 계속 방문을 이어 간다.
-//	            for (int i = 1; i <= 4; i++) {
-//	                if( ! matrix[v][i] || visit[i] ) continue;
-//	                queue.offer(i);
-//	                visit[i] = true;
-//	            }
-//	            
-//	        }
-//	    }
-//	    
-//	    // stack 대신 동일한 효과 더 편한 재귀 호출을 이용
-//	    static void dfs(int n) { // n : 시작 정점
-//	        visit[n] = true;
-//	        
-//	        // 필요한 처리 수행
-//	        System.out.print(n + " ");
-//	        
-//	        // 계속 방문을 이어 간다.
-//	        for (int i = 1; i <= 4; i++) {
-//	            if( ! matrix[n][i] || visit[i] ) continue;
-//	            dfs(i);
-//	        }       
-//	    }
+	static void dfs(int x) {
+		visit[x] = true;
+		sb1.append(x + " ");
+		for (int n : adjList.get(x)) {
+			if(visit[n]) continue;
+			visit[n] = true;
+			dfs(n);
+		}
+	}
+	
+	static void bfs(int x) {
+		q.offer(x);
+		visit[x] = true;
+		
+		sb2.append(x + " ");
+		while(!q.isEmpty()) {
+			
+			int n = q.poll();
+			
+			for (int i : adjList.get(n)) {
+				if(visit[i]) continue;
+					sb2.append(i + " ");
+					q.offer(i);
+					visit[i] = true;
+			}
+		}
+	}
 }
