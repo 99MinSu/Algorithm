@@ -24,8 +24,10 @@ public class Main {
             map = new int[I][I];
             visit = new boolean[I][I];
             StringTokenizer st = new StringTokenizer(br.readLine());
+
             int x1 = Integer.parseInt(st.nextToken());
             int y1 = Integer.parseInt(st.nextToken());
+
             st = new StringTokenizer(br.readLine());
             int x2 = Integer.parseInt(st.nextToken());
             int y2 = Integer.parseInt(st.nextToken());
