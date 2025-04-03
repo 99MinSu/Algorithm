@@ -22,12 +22,12 @@ class Solution {
 
             int k = 0;   
             for (int j = 0; j < begin.length(); j++) {
-                if (begin.charAt(j) != words[i].charAt(j)) {
+                if (begin.charAt(j) == words[i].charAt(j)) {
                     k++;
                 }
             }
 
-            if (k == 1) {  
+            if (k == begin.length() - 1) {  
                 visited[i] = true;
                 dfs(words[i], target, words, cnt + 1);
                 visited[i] = false;
