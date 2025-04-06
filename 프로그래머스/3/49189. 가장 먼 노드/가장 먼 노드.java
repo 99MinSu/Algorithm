@@ -1,54 +1,44 @@
 import java.util.*;
 
 class Solution {
-    ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    //인접 리스트에 그래프 저장
     public int solution(int n, int[][] edge) {
-        for(int i = 0 ; i <= n ; i++){
-            graph.add(new ArrayList<>());
-        } 
-		
-		for (int[] i : edge) {
-			int v = i[0];
-			int w = i[1];
-			graph.get(v).add(w);
-			graph.get(w).add(v);
-		}
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) graph.add(new ArrayList<>());
 
-		boolean[] visit = new boolean[n + 1];
-        return bfs(graph, n, visit);
+        for (int[] e : edge) {
+            graph.get(e[0]).add(e[1]);
+            graph.get(e[1]).add(e[0]);  // 양방향
+        }
+
+        boolean[] visited = new boolean[n + 1];
+        int[] distance = new int[n + 1];
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(1);
+        visited[1] = true;
+
+        while (!queue.isEmpty()) {
+            int now = queue.poll();
+
+            for (int next : graph.get(now)) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    distance[next] = distance[now] + 1;
+                    queue.offer(next);
+                }
+            }
+        }
+
+        int maxDist = 0;
+        for (int d : distance) {
+            if (d > maxDist) maxDist = d;
+        }
+
+        int count = 0;
+        for (int d : distance) {
+            if (d == maxDist) count++;
+        }
+
+        return count;
     }
-    
-    public static int bfs(ArrayList<ArrayList<Integer>> graph, int n, boolean[] visit) {
-		Queue<int[]> q = new LinkedList<>();
-		int answer = 0;
-		
-		q.add(new int[] {1, 0});
-		visit[1] = true;
-		int maxDepth = 0;
-		
-		while(!q.isEmpty()) {
-			int[] arr = q.poll();
-			int v = arr[0];
-			int depth = arr[1];
-			
-            
-			if(maxDepth == depth) answer++; // 최대 길이 노드라면 answer++;
-			else if (maxDepth < depth) { // 더 긴 거리에 노드가 있다면 answer = 1, MaxDepth 갱신
-				maxDepth = depth;
-				answer = 1;
-			}
-
-			
-			for (int i = 0; i < graph.get(v).size(); i++) {
-				int w = graph.get(v).get(i); //인접 정점
-				if (!visit[w]) {
-					q.add(new int[] { w, depth + 1 });
-					visit[w] = true;
-				}
-			}
-		}
-
-		return answer;
-	}
 }
