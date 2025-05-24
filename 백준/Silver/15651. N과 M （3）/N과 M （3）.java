@@ -16,13 +16,13 @@ public class Main {
         
 		arr = new int[m];
 		visit = new boolean[n+1];
-		dfs(n, m, 0);
+		dfs(0);
 		
 		System.out.println(sb);
 		
     }
     
-    static void dfs(int x, int y, int dep) {
+    static void dfs(int dep) {
     	
     	if(dep == m) {
 			for (int val : arr) {
@@ -34,7 +34,7 @@ public class Main {
     	
 		for (int i = 1; i <= n; i++) {
 			arr[dep] = i;
-			dfs(x, y, dep + 1);
+			dfs(dep + 1);
 		}
     }
 }
