@@ -9,7 +9,7 @@ class Solution
     
         for (int i=0;i<carr.length;i++) {
             char c = carr[i];
-            // 스택이 비어있다면 현재 문자는 반복될 일이 없으므로 push
+            // 스택이 비어있다면 
             if (stack.isEmpty()) stack.push(c);
             // 스택이 비어있지 않다면
             else {
