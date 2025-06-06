@@ -6,6 +6,7 @@ class Solution {
         
         HashMap<Integer, Integer> map = new HashMap<>(); 
         
+        // 맵에 귤 크기별로 담기
         for(int i : tangerine){
             map.put(i, map.getOrDefault(i, 0) + 1);
         }
