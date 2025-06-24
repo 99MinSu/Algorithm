@@ -5,6 +5,7 @@ class Solution {
     int[] dx = {1, 0, -1, 0};
     int[] dy = {0, 1, 0, -1};
     
+    // 최단거리
     public int solution(int[][] maps) {
         int answer = 0;
         
