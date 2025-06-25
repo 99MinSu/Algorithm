@@ -4,6 +4,7 @@ class Solution {
     public int solution(int[] scoville, int K) {
         int answer = 0;
         
+        // 우선순위 큐
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         for (int sco : scoville) priorityQueue.add(sco);
         
