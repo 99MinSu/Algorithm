@@ -3,6 +3,7 @@ class Solution {
     public int solution(int[] topping) {
         int answer = 0;
         
+        // 맵에 저장
         Map<Integer, Integer> map_1 = new HashMap<>(); // 형
         Map<Integer, Integer> map_2 = new HashMap<>(); // 동생
         
