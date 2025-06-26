@@ -2,6 +2,7 @@ class Solution {
     static boolean[] visited;  
     static int count = 0;  
   
+    // 완탐
     public int solution(int k, int[][] dungeons) {  
         visited = new boolean[dungeons.length];  
         dfs(0, k, dungeons);  
@@ -17,6 +18,7 @@ class Solution {
             dfs(depth + 1, fatigue - dungeons[i][1], dungeons);  
             visited[i] = false;  
         }  
+        // 최대값
         count = Math.max(count, depth);  
     }  
 }
