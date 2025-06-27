@@ -5,8 +5,8 @@ class Solution {
         int[] answer = new int[2];
         
         // 끝 글자와 첫 글자 비교
+        
         // 중복 비교
-
         HashSet<String> usedWords = new HashSet<>();
         usedWords.add(words[0]); 
 
