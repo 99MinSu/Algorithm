@@ -8,6 +8,7 @@ class Solution {
             return cities.length * 5;
         }
         
+        // 덱
         Deque<String> q = new ArrayDeque<>();
         
         for (String city : cities) {
