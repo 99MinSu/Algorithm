@@ -15,6 +15,7 @@ public class Main {
             int N = Integer.parseInt(st.nextToken()); // 문서의 개수
             int M = Integer.parseInt(st.nextToken());
 			
+            // 큐
             Queue<int[]> q = new LinkedList<int[]>();
 			
             st = new StringTokenizer(br.readLine());
