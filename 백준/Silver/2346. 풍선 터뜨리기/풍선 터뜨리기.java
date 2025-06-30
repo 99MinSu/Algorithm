@@ -54,6 +54,8 @@ public class Main {
         System.out.println(sb);
     }
 }
+
+// 풍선
 class Balloon{
     int index;
     int numValue;
@@ -63,4 +65,3 @@ class Balloon{
         this.numValue = numValue;
     }
 }
-   
