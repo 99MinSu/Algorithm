@@ -10,7 +10,9 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		
+        // 맵
 		HashMap<String, String> m = new HashMap<String, String>();
+        
 		for (int i = 0; i < N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			String name = st.nextToken();
