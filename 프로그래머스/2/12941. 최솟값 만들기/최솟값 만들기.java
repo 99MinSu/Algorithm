@@ -4,6 +4,7 @@ class Solution {
     public int solution(int []A, int []B) {
         int answer = 0;
 
+        // 정렬
         Arrays.sort(A);
         Arrays.sort(B);
 
