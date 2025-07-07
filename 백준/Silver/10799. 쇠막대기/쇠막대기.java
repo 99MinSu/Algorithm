@@ -4,9 +4,11 @@ import java.util.Stack;
  
 public class Main {
     public static void main(String[] args) throws NumberFormatException, Exception {
-        // TODO Auto-generated method stub
+
+        
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
+             
         Stack<Character> stack = new Stack<>();
  
         int result = 0;
