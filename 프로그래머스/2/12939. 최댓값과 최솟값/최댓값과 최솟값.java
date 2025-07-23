@@ -9,6 +9,7 @@ class Solution {
             arr[i] = Integer.parseInt(strArr[i]);
         }
         
+        // 정렬
         Arrays.sort(arr);
         
         StringBuilder sb = new StringBuilder();
