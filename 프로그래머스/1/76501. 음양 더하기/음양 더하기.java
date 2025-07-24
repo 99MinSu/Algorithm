@@ -1,6 +1,7 @@
 class Solution {
     public int solution(int[] absolutes, boolean[] signs) {
-        int answer = 123456789;
+        
+        int answer = 0;
                     
         int sum = 0;
         
