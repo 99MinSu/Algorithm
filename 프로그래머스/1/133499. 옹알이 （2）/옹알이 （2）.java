@@ -20,7 +20,7 @@ class Solution {
                 word = word.replace(babble, " "); // 공백으로 만들어줌
             }
             
-            if (word.trim().isEmpty()) { // trim()을 통해 공백 제거
+            if (word.trim().isEmpty()) { 
                 answer++;
             }
         }
